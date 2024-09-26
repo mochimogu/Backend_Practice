@@ -1,0 +1,42 @@
+{% extends "app.html" %}
+
+{% block content %}
+    <div>
+        <h2>Edit</h2>
+        <div class="blogContainer">
+            <div class="blogHeader">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title"/>
+                </div>
+                <div>
+                    <label for="category">Category</label>
+                    <select name="category" id="cat">
+                        <option value="" selected disabled hidden>Select</option>
+                        <option value="fitness">Fitness</option>
+                        <option value="philosophy">Philosophy</option>
+                        <option value="science">Science</option>
+                        <option value="politics">Politics</option>
+                        <option value="tech">Technology</option>
+                        <option value="food">Food</option>
+                    </select>
+                </div>
+            </div>
+            <div id="editorContainer">                
+                <div id="editor">
+                    <script defer src="{{ url_for('static', filename='/js/editor.js') }}">
+
+                    </script>  
+                </div>
+            </div>
+            <div>
+                {% if existed == true %}
+                <input type="button" value="Update" id="updateButton"/>
+                {% else %}
+                <input type="button" value="Save" id="saveButton"/>
+                {% endif %}
+                <input type="button" value="Publish" id="publishButton"/>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

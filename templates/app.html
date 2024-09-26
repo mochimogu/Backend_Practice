@@ -6,11 +6,16 @@
     <!--QUILL JS-->
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <link href="{{ url_for('static', filename="/css/editor.css")}}" rel="stylesheet"/>
+    <script defer src="{{ url_for('static', filename='/js/main.js') }}"></script>
     <title>Blogging</title>
 </head>
 <body>
     {% include "nav.html" %}
     <h1>Blogging</h1>
-    
+    <div>
+        {% block content %}
+        {% endblock content %}
+    </div>
 </body>
 </html>

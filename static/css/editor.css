@@ -1,0 +1,27 @@
+
+
+.blogContainer {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 100%;
+
+}
+.blogHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+
+#editorContainer {
+
+    width: 80%;
+    height: 500px;
+    margin-top: 20px;
+    margin-bottom: 5%;
+}

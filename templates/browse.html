@@ -1,0 +1,29 @@
+{% extends "app.html" %}
+
+
+{% block content %}
+    <div>
+        <h2>Browse</h2>
+        <div>
+
+            {% for items in data %}
+                <div>
+                    <div>
+                        <strong>ID:</strong> {{ items[0] }}<br>
+                        <strong>Title:</strong> {{ items[1] }}<br>
+                        <strong>Category:</strong> {{ items[2] }}<br>
+                        <strong>Tags:</strong> {{ items[3] | join(', ') }}<br>
+                        <strong>Content:</strong> {{ items[4] }}<br>
+                        <strong>Published:</strong> {{ items[5] }}<br>
+                        <strong>Created:</strong> {{ items[6] }}<br>
+                        <strong>Last Edited:</strong> {{ items[7] }}<br>
+                    </div>
+                    <div>
+                        <input type="button" value="Read"/>
+                    </div>
+                </div>
+            
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

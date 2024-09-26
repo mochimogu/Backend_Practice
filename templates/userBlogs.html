@@ -1,0 +1,32 @@
+{% extends "app.html" %}
+
+
+{% block content %}
+<div>
+    <h1>My Blogs</h1>
+    {% for elem in data %}
+        <div>
+            <div>
+                <strong>ID:</strong> {{ elem[0] }}<br>
+                <strong>Title:</strong> {{ elem[1] }}<br>
+                <strong>Category:</strong> {{ elem[2] }}<br>
+                <strong>Tags:</strong> {{ elem[3] | join(', ') }}<br>
+                <strong>Content:</strong> {{ elem[4] }}<br>
+                <strong>Published:</strong> {{ elem[5] }}<br>
+                <strong>Created:</strong> {{ elem[6] }}<br>
+                <strong>Last Edited:</strong> {{ elem[7] }}<br>
+            </div>
+            <div>
+                {% if elem[5] == False %}
+                    <input type="button" value="View" id="viewButton" onclick="viewBlog({{ elem[0] }})"/>
+                {% else %}
+                    <a href="{{ url_for('read', title= elem[1])}}">Read</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+
+
