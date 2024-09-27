@@ -1,8 +1,17 @@
 from flask import Flask, render_template, jsonify, request, json, redirect, url_for
 import database
+from urllib.parse import unquote
 
 app = Flask(__name__, static_folder='static')
 
+tagsList = [
+        ['tech', 'programming', 'pc'],
+        ['recipe', 'spice', 'food'],
+        ['gym', 'exercise', 'diet'],
+        ['republican', 'democrat', 'congress'],
+        ['peace', 'mindfulness', 'thinker'],
+        ['newton', 'biology', 'physics']
+    ]
 
 database.setup()
 
@@ -28,19 +37,50 @@ def read():
 
 
 @app.route('/read/<title>', methods=["GET", "POST"])
-def readBlog():
+def readBlog(title):
     
+    # print(title)
     
+    blogs = database.selectBlogsByPublishedTitle(title)
     
-    return render_template("readBlog.html"), 200
+    # print(blogs)
+    
+    safeHTML = blogs[4]
+    
+    return render_template("readBlog.html", data=blogs, html=safeHTML), 200
 
 #THIS WILL GENERATE A BUNCH OF BLOGS FOR USER TO CLICK TO READ
 @app.route('/browse', methods=["GET"])
 def browse():
     
-    blogs = database.selectBlogsByPublished()
+    # print(request.args.get('tags'))
     
-    return render_template("browse.html", data=blogs), 200
+    blogs = database.selectBlogsByPublished()
+        
+    return render_template("browse.html", data=blogs, list=tagsList), 200
+
+@app.route('/browse/tags/<tags>', methods=["POST", "GET"])
+def browseByTags(tags):
+    
+    print(tags)
+    
+    blogs = database.selectBlogsByPublishedTag(tags)
+    
+    # print(blogs)
+        
+    return render_template("browse.html", data=blogs, list=tagsList), 200
+
+@app.route('/browse/category/')
+@app.route('/browse/category/<cat>', methods=["POST", "GET"])
+def browseByCategory(cat=None):
+    
+    print(cat)
+    
+    blogs = database.selectBlogsByPublishedCat(cat)
+    
+    # print(blogs)
+        
+    return render_template("browse.html", data=blogs, cat=cat, list=tagsList), 200
 
 @app.route('/myBlogs')
 def userBlogs():
@@ -50,6 +90,8 @@ def userBlogs():
     
     return render_template("userBlogs.html", data=blogs), 200
 # ====================================================================
+
+
 @app.route('/saveBlog', methods=["POST", "GET"])
 def saveBlog():
     

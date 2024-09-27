@@ -82,6 +82,66 @@ def selectBlogsByPublished():
         results = cur.fetchall()
         
         return results
+    
+def selectBlogsByPublishedTitle(title):
+    with get_db_cursor(True) as cur:
+        
+        query = """SELECT * FROM blogs WHERE TITLE = %s AND PUBLISHED = %s;"""
+        
+        cur.execute(query, (str(title), True))
+        
+        results = cur.fetchall()[0]
+        
+        # print(results)
+        
+        return results
+    
+def selectBlogsByPublishedTag(tags):
+    with get_db_cursor(True) as cur:
+        
+        query = """SELECT * FROM blogs WHERE PUBLISHED = True;"""
+        
+        cur.execute(query)
+        
+        results = cur.fetchall()
+        
+        matches = []
+        
+        for elem in results:
+            for items in elem[3]:
+                # print(items)
+                if items == tags:
+                    matches.append(elem)
+        
+        # print(matches)
+        
+        return matches
+    
+def selectBlogsByPublishedCat(category):
+    with get_db_cursor(True) as cur:
+        
+        # print(category)
+        query = """SELECT * FROM blogs WHERE PUBLISHED = True;"""
+        
+        cur.execute(query)
+        
+        results = cur.fetchall()
+        # print(results)
+        matches = []
+        
+        if(category != None):
+            for i in range(len(results)):
+                if category == results[i][2]:
+                    matches.append(results[i])
+            return matches    
+
+        else:
+            return results
+
+        
+        # print(matches)
+        
+
 
 def selectBlogsByID(id):
     with get_db_cursor(True) as cur:

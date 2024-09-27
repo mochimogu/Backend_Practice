@@ -4,5 +4,20 @@
 {% block content %}
     <div>
         <h2>Read</h2>
+        <div id={{ data[0] }}>
+            <h2>{{ data[1] }}</h2>
+            <span>Category : {{ data[2] }}</span><br>
+            <span>Created : {{ data[6] }}</span>
+            <div>
+                <ul>
+                    {% for elem in data[3] %}
+                        <a href="/browse/tags/{{ elem }}"><li>{{ elem }}</li></a>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                {{ html | safe }}
+            </div>
+        </div>
     </div>
 {% endblock content %}
