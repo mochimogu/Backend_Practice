@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.filterContainer {
+
+    display: flex;
+    padding: 10px;
+    /* margin-right: 5px; */
+    margin-bottom: 10px;
+
+}
+
+.categoryContainer {
+
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 10px;
+}
+
+.browseContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.blogCardContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: auto;
+    width: auto;
+    padding: 5px;
+    
+
+}
+
+.blogCards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    height: auto;
+    width: 200px;
+    border-radius: 5px;
+    border-style: solid;
+    margin-bottom: 10px;
+}
+
+.blogLabel div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.blogCards .filterButton {
+
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+
+}
+
+.userBlogTitle {
+
+    padding: 5px;
+    margin-left: 10px;
+
+
+}
+
+

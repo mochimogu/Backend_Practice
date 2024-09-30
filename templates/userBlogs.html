@@ -3,18 +3,23 @@
 
 {% block content %}
 <div>
-    <h1>My Blogs</h1>
-    {% for elem in data %}
-        <div>
-            <div>
-                <strong>ID:</strong> {{ elem[0] }}<br>
-                <strong>Title:</strong> {{ elem[1] }}<br>
-                <strong>Category:</strong> {{ elem[2] }}<br>
-                <strong>Tags:</strong> {{ elem[3] | join(', ') }}<br>
-                <strong>Created:</strong> {{ elem[6] }}<br>
-                <strong>Last Edited:</strong> {{ elem[7] }}<br>
+    <h1 class="userBlogTitle">My Blogs</h1>
+    <div class="blogCardContainer">
+        {% for elem in data %}
+        <div class="blogCards">
+            <div class="blogLabel">
+                <div>
+                    <p><strong>ID:</strong> {{ elem[0] }}</p>
+                    <p><strong>Title:</strong> {{ elem[1] }}</p>
+                </div>
+                <p><strong>Category:</strong> {{ elem[2] }}</p>
+                <p><strong>Tags:</strong> {{ elem[3] | join(', ') }}</p>
+                <div>
+                    <p><strong>Created:</strong> {{ elem[6] }}</p>
+                    <p><strong>Last Edited:</strong> {{ elem[7] }}</p>
+                </div>
             </div>
-            <div>
+            <div class="filterButton">
                 {% if elem[5] == False %}
                     <input type="button" value="View" id="viewButton" onclick="viewBlog({{ elem[0] }})"/>
                 {% else %}
@@ -23,6 +28,7 @@
             </div>
         </div>
     {% endfor %}
+    </div>
 </div>
 
 {% endblock content %}

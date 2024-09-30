@@ -25,3 +25,28 @@
     margin-top: 20px;
     margin-bottom: 5%;
 }
+
+.editContainer {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.editContainer input {
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+.editButtonContainer {
+
+    margin-bottom: 20px;
+
+}
+
